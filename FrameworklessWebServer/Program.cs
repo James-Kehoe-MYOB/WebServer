@@ -24,7 +24,6 @@ namespace FrameworklessWebServer {
         }
 
         static void HandleRequest(HttpListenerContext context) {
-            string namelist;
             
             var request = context.Request;
             var response = context.Response;
