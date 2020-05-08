@@ -1,0 +1,13 @@
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer.deps.json
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer.runtimeconfig.json
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer.runtimeconfig.dev.json
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer.dll
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/FrameworklessWebServer.pdb
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.csprojAssemblyReference.cache
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.AssemblyInfoInputs.cache
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.AssemblyInfo.cs
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.dll
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.pdb
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.csproj.CopyComplete

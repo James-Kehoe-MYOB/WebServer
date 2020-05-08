@@ -1,0 +1,77 @@
+{
+  "school" :
+  [
+    {
+      "yearlevel": "7",
+      "classes" : 
+      [
+        {
+          "classname": "7A",
+          "students": [
+            {
+              "id": 1231,
+              "name": "Michael",
+              "age": 11
+            },
+            {
+              "id": 1232,
+              "name": "John",
+              "age": 12
+            }
+          ]
+        },
+        {
+          "classname": "7B",
+          "students": [
+            {
+              "id": 1233,
+              "name": "Mary",
+              "age": 11
+            },
+            {
+              "id": 1234,
+              "name": "Frank",
+              "age": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "yearlevel": "8",
+      "classes" :
+      [
+        {
+          "classname": "8A",
+          "students": [
+            {
+              "id": 1235,
+              "name": "Eliza",
+              "age": 13
+            },
+            {
+              "id": 1236,
+              "name": "Grace",
+              "age": 13
+            }
+          ]
+        },
+        {
+          "classname": "8B",
+          "students": [
+            {
+              "id": 1237,
+              "name": "Michael",
+              "age": 12
+            },
+            {
+              "id": 1238,
+              "name": "Tristan",
+              "age": 13
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
