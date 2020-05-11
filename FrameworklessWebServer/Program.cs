@@ -28,7 +28,6 @@ namespace FrameworklessWebServer {
             var request = context.Request;
             var response = context.Response;
             var method = request.HttpMethod;
-            var URLpath = request.Url.AbsolutePath;
             var URLsegments = request.Url.Segments;
 
             Console.WriteLine($"{method} {request.Url}");
