@@ -8,17 +8,18 @@ using Newtonsoft.Json.Linq;
 
 namespace FrameworklessWebServer {
     class Program {
-        private static string path = "../../../Students.json";
+        private static string path = "Students.json";
         private static List<Person> _people = InitPeopleData();
 
         static void Main(string[] args) {
             var server = new HttpListener();
-            server.Prefixes.Add("http://localhost:8080/");
+            server.Prefixes.Add("http://+:8080/");
             server.Start();
             while (true) {
-                Console.WriteLine("Waiting for client...");
+                Console.WriteLine("Waiting for MORE clients...");
                 var context = server.GetContext();  // Gets the request
                 HandleRequest(context);
+                context.Response.StatusCode = 200;
             }
             server.Stop();  // never reached...
         }
