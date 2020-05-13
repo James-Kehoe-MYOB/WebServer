@@ -16,7 +16,7 @@ namespace FrameworklessWebServer {
             server.Prefixes.Add("http://+:8080/");
             server.Start();
             while (true) {
-                Console.WriteLine("Waiting for MORE clients...");
+                Console.WriteLine("Waiting for EVEN MORE clients...");
                 var context = server.GetContext();  // Gets the request
                 HandleRequest(context);
                 context.Response.StatusCode = 200;
