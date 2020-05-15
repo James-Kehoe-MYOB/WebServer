@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Students.json">
+      <None Update="Data\Students.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
