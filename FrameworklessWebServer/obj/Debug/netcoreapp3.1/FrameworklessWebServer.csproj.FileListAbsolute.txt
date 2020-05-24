@@ -11,3 +11,4 @@
 /Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.pdb
 /Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/Newtonsoft.Json.dll
 /Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/Debug/netcoreapp3.1/FrameworklessWebServer.csproj.CopyComplete
+/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/bin/Debug/netcoreapp3.1/Data/Students.json
