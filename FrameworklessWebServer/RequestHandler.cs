@@ -2,6 +2,7 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using FrameworklessWebServer.DataAccess;
+using FrameworklessWebServer.HTTPMethods;
 
 namespace FrameworklessWebServer {
     public static class RequestHandler {
@@ -11,32 +12,30 @@ namespace FrameworklessWebServer {
             var response = context.Response;
             var method = request.HttpMethod;
             var URLsegments = request.Url.Segments;
-            HTTPMethods methodList = ParsePath(URLsegments);
+            var methodList = ParsePath(URLsegments);
             var handled = false;
             
             Console.WriteLine($"{method} {request.Url}");
 
             switch (method) {
                 case "GET":
-                    await Task.FromResult(0);
-                    System.Threading.Thread.Sleep(10000);
-                    methodList.Get(context);
+                    await methodList.Get(context);
                     handled = true;
                     break;
                 case "POST":
-                    methodList.Post(context);
+                    await methodList.Post(context);
                     handled = true;
                     break;
                 case "DELETE":
-                    methodList.Delete(context);
+                    await methodList.Delete(context);
                     handled = true;
                     break;
                 case "PUT":
-                    methodList.Put(context);
+                    await methodList.Put(context);
                     handled = true;
                     break;
                 case "PATCH":
-                    methodList.Patch(context);
+                    await methodList.Patch(context);
                     handled = true;
                     break;
             }
@@ -46,29 +45,29 @@ namespace FrameworklessWebServer {
             }
         }
 
-        private static HTTPMethods ParsePath(string[] URLsegments) {
+        private static IHttpMethods ParsePath(string[] URLsegments) {
             if (URLsegments.Length > 1) {
                 switch (URLsegments[1].Replace('/', ' ').Trim()) {
                     case "names":
                         switch (URLsegments.Length) {
                             case 2:
-                                return new nameHTTPMethods();
+                                return new NameHttpMethods();
                             case 3:
                                 if (int.TryParse(URLsegments[2].Replace('/', ' ').Trim(), out var id)) {
-                                    return new personHTTPMethods(id);
+                                    return new PersonHttpMethods(id);
                                 }
                                 else {
-                                    return new defaultHTTPMethods();
+                                    return new DefaultHttpMethods();
                                 }
                             default:
-                                return new defaultHTTPMethods();
+                                return new DefaultHttpMethods();
                         }
                     default:
-                        return new defaultHTTPMethods();
+                        return new DefaultHttpMethods();
                 }
             }
             else {
-                return new defaultHTTPMethods();
+                return new DefaultHttpMethods();
             }
         }
     }

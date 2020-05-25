@@ -1,39 +1,45 @@
 using System.Net;
+using System.Threading.Tasks;
 using FrameworklessWebServer.DataAccess;
 
-namespace FrameworklessWebServer {
-    public class personHTTPMethods : HTTPMethods {
+namespace FrameworklessWebServer.HTTPMethods {
+    public class PersonHttpMethods : IHttpMethods {
         public int id { get; set; }
 
-        public personHTTPMethods(int id) {
+        public PersonHttpMethods(int id) {
             this.id = id;
         }
         
-        public void Get(HttpListenerContext context) {
-            if (JsonHandler.People.Exists(m => m.ID == id)) {
-                var person = JsonHandler.People.Find(m => m.ID == id);
-                ContextOperations.Write("Here is the person you are looking for:\n" + $"No. {person.ID} - {person.Name}, Age {person.Age}\n", context.Response);
-            }
-            else {
-                ContextOperations.Write($"There is no person with the ID number {id}", context.Response);
-            }
-
+        public async Task Get(HttpListenerContext context) {
+            await Task.Run(() => {
+                if (JsonHandler.People.Exists(m => m.ID == id)) {
+                    var person = JsonHandler.People.Find(m => m.ID == id);
+                    ContextOperations.Write("Here is the person you are looking for:\n" + $"No. {person.ID} - {person.Name}, Age {person.Age}\n", context.Response);
+                }
+                else {
+                    ContextOperations.Write($"There is no person with the ID number {id}", context.Response);
+                }
+            });
         }
 
-        public void Post(HttpListenerContext context) {
-            throw new System.NotImplementedException();
+        public async Task Post(HttpListenerContext context) {
+            var defaultMethods = new DefaultHttpMethods();
+            await defaultMethods.Post(context);
         }
 
-        public void Put(HttpListenerContext context) {
-            throw new System.NotImplementedException();
+        public async Task Put(HttpListenerContext context) {
+            var defaultMethods = new DefaultHttpMethods();
+            await defaultMethods.Put(context);
         }
 
-        public void Patch(HttpListenerContext context) {
-            throw new System.NotImplementedException();
+        public async Task Patch(HttpListenerContext context) {
+            var defaultMethods = new DefaultHttpMethods();
+            await defaultMethods.Patch(context);
         }
 
-        public void Delete(HttpListenerContext context) {
-            throw new System.NotImplementedException();
+        public async Task Delete(HttpListenerContext context) {
+            var defaultMethods = new DefaultHttpMethods();
+            await defaultMethods.Delete(context);
         }
     }
 }

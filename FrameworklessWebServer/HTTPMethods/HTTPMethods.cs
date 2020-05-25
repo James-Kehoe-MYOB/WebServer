@@ -1,15 +1,16 @@
 using System.Net;
+using System.Threading.Tasks;
 
-namespace FrameworklessWebServer {
-    public interface HTTPMethods {
-        void Get(HttpListenerContext context);
+namespace FrameworklessWebServer.HTTPMethods {
+    public interface IHttpMethods {
+        Task Get(HttpListenerContext context);
+        
+        Task Post(HttpListenerContext context);
 
-        void Post(HttpListenerContext context);
+        Task Put(HttpListenerContext context);
 
-        void Put(HttpListenerContext context);
+        Task Patch(HttpListenerContext context);
 
-        void Patch(HttpListenerContext context);
-
-        void Delete(HttpListenerContext context);
+        Task Delete(HttpListenerContext context);
     }
 }

@@ -1,25 +1,28 @@
+using System;
 using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace FrameworklessWebServer {
-    public class defaultHTTPMethods : HTTPMethods {
-        public void Get(HttpListenerContext context) {
-            ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response);
+namespace FrameworklessWebServer.HTTPMethods {
+    public class DefaultHttpMethods : IHttpMethods {
+        public async Task Get(HttpListenerContext context) {
+            await Task.Run(() => ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response));
         }
 
-        public void Post(HttpListenerContext context) {
-            ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response);
+        public async Task Post(HttpListenerContext context) {
+            await Task.Run(() => ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response));
         }
 
-        public void Put(HttpListenerContext context) {
-            ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response);
+        public async Task Put(HttpListenerContext context) {
+            await Task.Run(() => ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response));
         }
 
-        public void Patch(HttpListenerContext context) {
-            ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response);
+        public async Task Patch(HttpListenerContext context) {
+            await Task.Run(() => ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response));
         }
 
-        public void Delete(HttpListenerContext context) {
-            ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response);
+        public async Task Delete(HttpListenerContext context) {
+            await Task.Run(() => ContextOperations.Write("Welcome to the server! To get the list of names, head to http://localhost:8080/names", context.Response));
         }
     }
 }

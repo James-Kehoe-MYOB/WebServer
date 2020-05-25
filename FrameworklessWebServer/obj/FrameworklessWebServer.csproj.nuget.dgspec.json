@@ -14,7 +14,7 @@
         "outputPath": "/Users/james.kehoe/RiderProjects/FrameworklessWebServerSolution/FrameworklessWebServer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/james.kehoe/.config/NuGet/NuGet.Config"
+          "/Users/james.kehoe/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
