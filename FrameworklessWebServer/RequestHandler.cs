@@ -54,7 +54,7 @@ namespace FrameworklessWebServer {
                                 return new NameHttpMethods();
                             case 3:
                                 if (int.TryParse(URLsegments[2].Replace('/', ' ').Trim(), out var id)) {
-                                    return new PersonHttpMethods(id);
+                                    return new StudentIdHttpMethods(id);
                                 }
                                 else {
                                     return new DefaultHttpMethods();

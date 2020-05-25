@@ -5,23 +5,23 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace FrameworklessWebServer.DataAccess {
-    public static class JsonHandler {
+    public class JsonHandler {
         private static string path = "Data/Students.json";
-        public static List<Person> People = InitPeopleData();
+        public static List<Student> Students = InitStudentData();
         
         
-        public static List<Person> InitPeopleData() {
+        public static List<Student> InitStudentData() {
             var responseBody = JObject.Load(new JsonTextReader(new StreamReader(path)));
-            var people = JsonConvert.DeserializeObject<List<Person>>(responseBody["people"].ToString());
-            return people;
+            var students = JsonConvert.DeserializeObject<List<Student>>(responseBody["students"].ToString());
+            return students;
         }
         
         public static void UpdateData() {
             var list =
                 new JObject(
-                    new JProperty("people",
+                    new JProperty("students",
                         new JArray(
-                            from p in People
+                            from p in Students
                             orderby p.ID
                             select new JObject(
                                 new JProperty("id", p.ID),
@@ -34,6 +34,22 @@ namespace FrameworklessWebServer.DataAccess {
 
             var listString = list.ToString();
             File.WriteAllText(path, listString);
+        }
+
+        public void Update(Student student) {
+            throw new System.NotImplementedException();
+        }
+
+        public Student GetStudentByID(int id) {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Student> GetStudents() {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteStudentByID(int id) {
+            throw new System.NotImplementedException();
         }
     }
 }

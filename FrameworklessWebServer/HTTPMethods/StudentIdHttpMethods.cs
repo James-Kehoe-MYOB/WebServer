@@ -3,21 +3,21 @@ using System.Threading.Tasks;
 using FrameworklessWebServer.DataAccess;
 
 namespace FrameworklessWebServer.HTTPMethods {
-    public class PersonHttpMethods : IHttpMethods {
+    public class StudentIdHttpMethods : IHttpMethods {
         public int id { get; set; }
 
-        public PersonHttpMethods(int id) {
+        public StudentIdHttpMethods(int id) {
             this.id = id;
         }
         
         public async Task Get(HttpListenerContext context) {
             await Task.Run(() => {
-                if (JsonHandler.People.Exists(m => m.ID == id)) {
-                    var person = JsonHandler.People.Find(m => m.ID == id);
-                    ContextOperations.Write("Here is the person you are looking for:\n" + $"No. {person.ID} - {person.Name}, Age {person.Age}\n", context.Response);
+                if (JsonHandler.Students.Exists(m => m.ID == id)) {
+                    var student = JsonHandler.Students.Find(m => m.ID == id);
+                    ContextOperations.Write("Here is the student you are looking for:\n" + $"No. {student.ID} - {student.Name}, Age {student.Age}\n", context.Response);
                 }
                 else {
-                    ContextOperations.Write($"There is no person with the ID number {id}", context.Response);
+                    ContextOperations.Write($"There is no student with the ID number {id}", context.Response);
                 }
             });
         }
