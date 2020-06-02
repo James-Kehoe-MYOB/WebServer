@@ -1,8 +1,10 @@
 using System;
+using System.Net;
+using FrameworklessWebServer.Business_Logic;
 using Xunit;
 
 namespace WebServerTests {
-    public class UnitTest1 {
+    public class StudentListTests {
         [Fact]
         public void Test1() {
         }

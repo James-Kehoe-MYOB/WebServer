@@ -16,11 +16,11 @@ namespace FrameworklessWebServer {
         
             var Listener = new HttpListener { Prefixes = { $"http://+:{port}/" } };
             
-            var ws = new ServerOperations(Listener);
+            var server = new ServerOperations(Listener);
 
-            ws.StartWebServer();
+            server.StartWebServer();
             Console.ReadKey();
-            ws.StopWebServer();
+            server.StopWebServer();
         }
         
         
