@@ -1,13 +1,12 @@
 using System;
 using System.Net;
-using System.Threading.Tasks;
 
-namespace FrameworklessWebServer {
+namespace FrameworklessWebServer.Business_Logic {
     public class ServerOperations {
         private HttpListener _listener;
 
-        public ServerOperations(HttpListener Listener) {
-            _listener = Listener;
+        public ServerOperations(HttpListener listener) {
+            _listener = listener;
         }
         
         private bool _keepGoing = true;
@@ -20,12 +19,10 @@ namespace FrameworklessWebServer {
                 try {
                     var context = await _listener.GetContextAsync();
                     RequestHandler.HandleRequest(context);
-                    
                 } catch (Exception e) {
                     if (e is HttpListenerException) return;
                     Console.WriteLine(e.Message);
                 }
-                
             }
         }
         

@@ -1,4 +1,4 @@
-namespace FrameworklessWebServer.DataAccess {
+namespace FrameworklessWebServer.DataModels {
     public class StudentEntity {
         private string id;
         private string firstName;

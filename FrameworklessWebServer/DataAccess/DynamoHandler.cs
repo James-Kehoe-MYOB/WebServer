@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Amazon.DynamoDBv2.DocumentModel;
+using FrameworklessWebServer.DataModels;
 using Newtonsoft.Json;
 
 namespace FrameworklessWebServer.DataAccess {

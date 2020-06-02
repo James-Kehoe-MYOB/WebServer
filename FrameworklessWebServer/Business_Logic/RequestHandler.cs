@@ -1,20 +1,18 @@
 using System;
 using System.Net;
-using System.Threading.Tasks;
-using FrameworklessWebServer.DataAccess;
 using FrameworklessWebServer.HTTPMethods;
 
-namespace FrameworklessWebServer {
+namespace FrameworklessWebServer.Business_Logic {
     public static class RequestHandler {
 
         public static async void HandleRequest(HttpListenerContext context) {
             var request = context.Request;
             var response = context.Response;
             var method = request.HttpMethod;
-            var URLsegments = request.Url.Segments;
-            var methodList = ParsePath(URLsegments);
+            var urlSegments = request.Url.Segments;
+            var methodList = ParsePath(urlSegments);
             var handled = false;
-            
+
             Console.WriteLine($"{method} {request.Url}");
 
             switch (method) {

@@ -1,4 +1,4 @@
-namespace FrameworklessWebServer {
+namespace FrameworklessWebServer.DataModels {
     public class Student {
         public string id { get; set; }
         public string Name { get; set; }

@@ -1,8 +1,9 @@
 using System.IO;
 using System.Net;
+using FrameworklessWebServer.DataModels;
 using Newtonsoft.Json;
 
-namespace FrameworklessWebServer {
+namespace FrameworklessWebServer.Business_Logic {
     public static class ContextOperations {
         
         public static void Write(string msg, HttpListenerResponse response) {
