@@ -3,10 +3,10 @@ using System.Net;
 using System.Threading.Tasks;
 
 namespace FrameworklessWebServer {
-    public class WebService {
+    public class ServerOperations {
         private HttpListener _listener;
 
-        public WebService(HttpListener Listener) {
+        public ServerOperations(HttpListener Listener) {
             _listener = Listener;
         }
         
@@ -20,10 +20,12 @@ namespace FrameworklessWebServer {
                 try {
                     var context = await _listener.GetContextAsync();
                     RequestHandler.HandleRequest(context);
+                    
                 } catch (Exception e) {
                     if (e is HttpListenerException) return;
                     Console.WriteLine(e.Message);
                 }
+                
             }
         }
         

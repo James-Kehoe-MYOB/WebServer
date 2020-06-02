@@ -22,9 +22,9 @@ namespace FrameworklessWebServer.DataAccess {
                     new JProperty("students",
                         new JArray(
                             from p in Students
-                            orderby p.ID
+                            orderby p.id
                             select new JObject(
-                                new JProperty("id", p.ID),
+                                new JProperty("id", p.id),
                                 new JProperty("name", p.Name),
                                 new JProperty("age", p.Age)
                             )

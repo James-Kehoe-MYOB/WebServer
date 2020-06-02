@@ -8,35 +8,32 @@ using Newtonsoft.Json;
 
 namespace FrameworklessWebServer.HTTPMethods {
     public class NameHttpMethods : IHttpMethods {
+
+        DynamoHandler _database = new DynamoHandler();
+        
         public async Task Get(HttpListenerContext context) {
             await Task.Run(() => {
-                if (JsonHandler.Students.Count > 0) {
-                    var studentsOrdered = JsonHandler.Students.OrderBy(m => m.ID);
-                    var studentList = studentsOrdered.Aggregate("The students are: \n",
-                        (current, student) => current + $"No. {student.ID} - {student.Name}, Age {student.Age}\n");
-                    ContextOperations.Write(studentList, context.Response);
-                }
-                else {
-                    ContextOperations.Write("No data found!", context.Response);
-                }
+                var students = _database.GetStudents();
+                var studentsOrdered = students.Result.OrderBy(m => m.id);
+                var studentList = studentsOrdered.Aggregate("The students are: \n", (current, student) => current + $"No. {student.id} - {student.Name}, Age {student.Age}\n");
+                ContextOperations.Write(studentList, context.Response);
             });
         }
 
         public async Task Post(HttpListenerContext context) {
-            await Task.Run(() => {
-                var student = GetStudentFromRequestBody(context.Request);
-                            
-                var time = DateTime.Now;
-                var timeHours = time.ToString("hh:mmtt");
-                var timeDate = time.ToString("dd MMMM yyyy");
-                if (!JsonHandler.Students.Exists(m => m.ID == student.ID)) {
-                    JsonHandler.Students.Add(student);
-                    JsonHandler.UpdateData();
-                    var report = $"{student.Name} added to student list at {timeHours} on {timeDate}";
-                    ContextOperations.Write(report, context.Response);
+            await Task.Run(async () => {
+                var student = ContextOperations.GetStudentFromRequestBody(context);
+                if (student != null) {
+                    if (_database.GetStudentByID(student.id).Result == null) {
+                        await _database.Update(student); 
+                        ContextOperations.Write($"{student.Name} added to student list", context.Response);
+                    }
+                    else {
+                        ContextOperations.Write("A student with that ID already exists", context.Response);
+                    }
                 }
                 else {
-                    ContextOperations.Write("A student with that ID already exists, please use a different ID", context.Response);
+                    ContextOperations.Write("Was unable to process request", context.Response);
                 }
             });
             
@@ -53,27 +50,19 @@ namespace FrameworklessWebServer.HTTPMethods {
         }
 
         public async Task Delete(HttpListenerContext context) {
-            await Task.Run(() => {
-                var student = GetStudentFromRequestBody(context.Request);
-                            
-                var search = JsonHandler.Students.Find(m => m.ID == student.ID);
-                if (JsonHandler.Students.Exists(m => m.ID == search.ID)) {
-                    JsonHandler.Students.Remove(search);
-                    ContextOperations.Write($"Student No. {search.ID} - '{search.Name}' has been deleted", context.Response);
-                    JsonHandler.UpdateData();
+            await Task.Run(async () => {
+                var student = ContextOperations.GetStudentFromRequestBody(context);
+                
+                if (_database.GetStudentByID(student.id).Result != null) {
+                    ContextOperations.Write($"Deleting student number {student.id} from student list...", context.Response);
+                    await _database.DeleteStudentByID(student.id);
                 }
                 else {
-                    ContextOperations.Write($"'{student.ID}' did not match any item in student list", context.Response);
+                    ContextOperations.Write("Could not find student with that ID", context.Response);
                 }
             });
         }
         
-        private static Student GetStudentFromRequestBody(HttpListenerRequest request) {
-            var input = request.InputStream;
-            var reader = new StreamReader(input, request.ContentEncoding);
-            var deleteName = reader.ReadToEnd();
-            var dName = JsonConvert.DeserializeObject<Student>(deleteName);
-            return dName;
-        }
+        
     }
 }

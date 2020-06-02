@@ -4,6 +4,5 @@ namespace FrameworklessWebServer.DataAccess {
         private string firstName;
         private string lastName;
         private string createTime;
-
     }
 }
